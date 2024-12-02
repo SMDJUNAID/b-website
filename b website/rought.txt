@@ -1,0 +1,6 @@
+.hero-image {
+    width: 1265px;
+    height: auto;
+    margin-left: -30px;
+    margin-top: -20px;
+}
