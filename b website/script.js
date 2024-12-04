@@ -1,16 +1,4 @@
-// Fallback for browsers that don't support CSS smooth scroll
-// document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-//     anchor.addEventListener('click', function(e) {
-//         e.preventDefault();
-        
-//         const target = document.querySelector(this.getAttribute('href'));
-//         target.scrollIntoView({
-//             behavior: 'smooth',
-//             block: 'start'
-//         });
-//     });
-// });
-// Fallback for browsers that don't support CSS smooth scroll and enhance functionality
+// Smooth scroll for anchor links
 document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -18,24 +6,7 @@ document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
         const target = document.querySelector(this.getAttribute('href'));
         
         if (target) {
-            const rect = target.getBoundingClientRect();
-            const topPosition = target.getBoundingClientRect().top + window.scrollY;
-
-            // Prevent unnecessary scrolling if the section is already in view
-            if (rect.top !== 0 || rect.left !== 0) {
-                // Smooth scroll fallback for browsers that support it
-                if ('scrollBehavior' in document.documentElement.style) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                } else {
-                    window.scrollTo({
-                        top: topPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            }
+            target.scrollIntoView({ behavior: 'smooth' });
         }
     });
 });
@@ -46,9 +17,8 @@ const navLinks = document.querySelectorAll('nav a');
 
 window.addEventListener('scroll', () => {
     let current = '';
-
     sections.forEach(section => {
-        const sectionTop = section.offsetTop - 70; // Adjust for navbar height
+        const sectionTop = section.offsetTop - 70;
         if (pageYOffset >= sectionTop) {
             current = section.getAttribute('id');
         }
@@ -61,3 +31,12 @@ window.addEventListener('scroll', () => {
         }
     });
 });
+
+// Toggle hamburger menu on smaller screens
+
+function toggleMenu() {
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('nav ul');
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+}

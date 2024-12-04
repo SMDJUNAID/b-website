@@ -40,6 +40,23 @@ header nav ul li a {
     font-weight: bold;
 }
 
+/* Hamburger styles */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    font-size: 30px;
+    color: #fff;
+    padding: 10px;
+}
+
+/* Hide menu by default on small screens */
+header nav ul {
+    display: flex;
+}
+
+header nav ul li {
+    display: inline-block;
+}
 /* Hero Section */
 .hero {
     position: relative;
@@ -165,29 +182,44 @@ footer {
 
 /* Media Queries for Responsive Design */
 
-/* Small devices (phones, less than 600px) */
 @media (max-width: 600px) {
+    body{
+        max-width: 100%;
+        padding: 5px;
+        /* border: 2px solid red; */
+        margin: 0;
+    }
     header nav ul {
+        display: none;
         flex-direction: column;
+        width: 500px;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: rgba(51, 51, 51, 0.7);
     }
 
     header nav ul li {
-        margin: 10px 0;
+        text-align: center;
+        width: 100%;
+    }
+    .hero-image{
+        /* display: block; */
+        width: 115%;
+        height: 500px;
+    }
+    /* #whatsapp-button{
+        position: relative;
+        left: 20%;
+        
+    } */
+
+    .hamburger {
+        display: block; /* Show hamburger */
     }
 
-    .hero-text {
-        padding: 15px;
-        font-size: 1em;
-    }
-
-    .product-item img,
-    .industry-item img {
-        height: 150px;
-    }
-
-    .product-item h3,
-    .industry-item h3 {
-        font-size: 1.1em;
+    header nav ul.active {
+        display: flex; /* Show menu when active */
     }
 }
 
